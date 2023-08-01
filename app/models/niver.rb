@@ -1,0 +1,2 @@
+class Niver < ApplicationRecord
+end

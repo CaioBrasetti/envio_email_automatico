@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="jumbotron text-center">
+  <h1>Pacientes</h1>
+</div>
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Data de nascimento</th>
+        <th>Email</th>  
+        <th>Informações</th>              
+      </tr>
+    </thead>
+    <button type="button floatLeft" class="btn btn-dark" style="float: left">
+    <%= link_to "Novo Paciente", new_niver_path %>
+  </button>
+    <button type="button floatLeft" class="btn btn-dark" style="float: left; margin-left: 5px">
+    <%= link_to "Mes", mes_index_path %>
+  </button>
+
+  <body>
+  <h6 align="right"> Total de Pacientes: <b><%= @nivers.length %></b></h4>
+  </body>
+  
+<tbody>
+  <% @nivers.each do |niver| %>
+    <tr>
+        <td><%= niver.nome %></td>
+        <td><%= niver.data_de_nascimento.strftime("%d/%m/%Y") %></td>
+        <td><%= niver.email %></td>        
+        <td> <%= link_to "Mostrar Paciente", niver %> </td>              
+        </tr>        
+        <% end %>
+      
+      <br>
+      <br>
+    </tbody>
+  </table>
+</div>
+ 
+

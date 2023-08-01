@@ -1,0 +1,43 @@
+<p style="color: green"><%= notice %></p>
+
+<div class="text-center">
+  <h1>Informações do Paciente</h1>
+</div>
+
+
+<br>
+
+<div class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Data de nascimento</th>
+      </tr>
+    </thead>
+    <tbody>      
+        <tr>
+          <td><%= @niver.nome %></td>
+          <td><%= @niver.email %></td>
+          <td><%= @niver.data_de_nascimento.strftime("%d/%m/%Y") %></td>          
+        </tr>      
+    </tbody>
+  </table>
+</div>
+<br>
+<br>
+<div>
+<center>
+  <button type="button floatLeft" class="btn btn-dark" style=" float: rigth; margin-left: 5px">
+    <%= link_to "Editar paciente", edit_niver_path(@niver) %> 
+  </button>
+  
+  <button type="button floatLeft" class="btn btn-dark" style=" float: rigth; margin-left: 5px">
+    <%= link_to "Voltar para Pacientes", nivers_path %> 
+  </button>
+  
+  <br>
+  <br> 
+  <%= button_to "Deletar Paciente", @niver, method: :delete, data: {confirm: "Tem certeza que deseja deletar esse paciente?"} %>
+ </center>

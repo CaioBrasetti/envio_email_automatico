@@ -1,0 +1,30 @@
+<br>
+<br>
+<div class="text-center">
+  <h1>Editar Paciente</h1>
+</div>
+
+
+<div class="container">
+  <table class="table table-striped">
+        <tbody>      
+        <tr>
+        <center>
+          <%= render "form", niver: @niver %>
+          </center>         
+        </tr>      
+    </tbody>
+  </table>
+
+<br>
+
+<center>
+  <button type="button floatLeft" class="btn btn-dark" style=" float: rigth; margin-left: 5px">
+    <%= link_to "Mostrar esse paciente", @niver %>
+  </button>
+  
+  <button type="button floatLeft" class="btn btn-dark" style=" float: rigth; margin-left: 5px">
+    <%= link_to "Voltar para Pacientes", nivers_path %> 
+  </button>
+ </center> 
+  

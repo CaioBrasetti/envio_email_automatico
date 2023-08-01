@@ -1,0 +1,4 @@
+cron:
+- description: "Enviar email diariamente"
+  url: /mnt/c/aniversario/aniversario/app/controllers/email_controller.rb
+  schedule: every day 09:00
