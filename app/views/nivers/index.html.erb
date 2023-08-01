@@ -1,3 +1,10 @@
+<% if user_signed_in? %> 
+ <div> Bem vindo <%= current_user.email %> </div> 
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %> 
+<% end %>
+
 <p style="color: green"><%= notice %></p>
 
 <div class="jumbotron text-center">
