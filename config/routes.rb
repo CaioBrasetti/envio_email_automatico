@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
 
   root "nivers#index"
-   
+
+  post 'nivers/atualizar_dados', to: 'nivers#atualizar_dados'
 end

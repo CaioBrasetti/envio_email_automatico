@@ -9,16 +9,13 @@ class EmailController < NiversController
     pacientes = Niver.all
     
     pacientes.each do |paciente|      
-      aniversario = Date.today
+      aniversario = paciente[:data_de_nascimento]
       data_atual = Date.today
 
       if data_atual.month == aniversario.month && data_atual.day == aniversario.day
         nome = paciente[:nome]
         nome = nome.tr('ÁÀÃÂÉÈÊÍÌÎÓÒÕÔÚÙÛáàãâéèêíìîóòõôúùû', 'AAAAEEEIIIOOOOUUUUaaaaeeeiiioooouuuu')
-        # email = paciente[:email]
-        email = "caiobrasetti@gmail.com"
-        puts nome
-        puts email
+        email = paciente[:email]
 
         msg = "From: Cynthia Koury <ckfonoaudiologia@hotmail.com>\n"
         msg += "To: #{nome} <#{email}>\n"

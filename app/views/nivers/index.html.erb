@@ -1,3 +1,9 @@
+<% flash.each do |type, msg| %>
+  <div class="alert alert-info">
+    <%= msg %>
+  </div>
+<% end %>
+
 <% if user_signed_in? %> 
  <div> Welcome <%= current_user.email %> </div> 
   <%= button_to "Sign out", destroy_user_session_path, method: :delete %> 
@@ -46,5 +52,24 @@
     </tbody>
   </table>
 </div>
+<br>
+<br>
+
+<!-- Upload de arquivo -->
+  <div class="centralizar">
+    <form class="form" action="/nivers/atualizar_dados" method="post" enctype="multipart/form-data">
+      <span class="form-title">Upload do seu arquivo</span>
+      <p class="form-paragraph">
+          O arquivo deve ser um .xlsx
+        </p>
+      <label for="file-input" class="drop-container">
+      <span class="drop-title">Arraste seu arquivo aqui</span>
+      ou
+      <input type="file" accept=".xlsx" required="" id="file-input" name="file_input">
+    </label>
+    <button type="submit">Enviar Arquivo</button>
+    </form>
+  </div>
+<!-- Upload de arquivo -->
  
 

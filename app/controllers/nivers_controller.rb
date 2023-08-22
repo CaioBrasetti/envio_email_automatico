@@ -1,13 +1,40 @@
 class NiversController < ApplicationController
+  require 'roo'
+
+  skip_before_action :verify_authenticity_token
   before_action :set_niver, only: %i[ show edit update destroy ]
 
   def atualizar_dados
-    file_contents = File.read('/mnt/c/email_pacientes/pacientes.txt')
-    dados = eval(file_contents)
+    file_contents = params[:file_input]
 
-    dados.each do |paciente|
-      Niver.find_or_create_by!(paciente)
+    if file_contents.present?
+      spreadsheet = Roo::Spreadsheet.open(file_contents.path) # Ou use 'Roo::Spreadsheet.open' para outros formatos
+      sheet_name = 'teste_caio'
+      spreadsheet.default_sheet = sheet_name
+      headers = spreadsheet.row(1)
+      data = []
+      
+      # Agora você pode iterar pelas planilhas e linhas para processar os dados do arquivo
+      spreadsheet.each_with_index  do |row, id|
+        next if id == 0 # skip header
+        value = {}
+
+        headers.each_with_index do |header, index|
+          value[header] = row[index]
+        end
+
+        data << value
+        # Processar cada linha conforme necessário
+      end
+
+    data.each do |paciente|
+      Niver.where(nome: paciente["Paciente"], data_de_nascimento: paciente["Data de Nascimento"], email: paciente["E-mail"]).first_or_create
     end
+      flash[:success] = 'Arquivo processado com sucesso.'
+    else
+      flash[:error] = 'Nenhum arquivo foi enviado.'
+    end
+      redirect_to root_path
   end
 
   # GET /nivers or /nivers.json
