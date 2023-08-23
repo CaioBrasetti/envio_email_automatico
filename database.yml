@@ -1,0 +1,8 @@
+production: <<: *default
+  database: dadospacientes
+  pool: 25
+  username: dadospacientes_user
+  password: <%= ENV['DADOS_APP_DATABASE_PASSWORD'] %>
+  adapter: postgresql
+  prepared_statements: false
+  advisory_locks: false
