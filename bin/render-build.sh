@@ -3,6 +3,5 @@
 set -o errexit
 
 bundle install
-bundle exec rails db:drop
-bundle exec rails db:create
+bundle exec bin/rails db:prepare
 bundle exec rails db:migrate
